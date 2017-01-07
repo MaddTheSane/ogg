@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 42;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,6 +20,8 @@
 /* Begin PBXFileReference section */
 		089C1667FE841158C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		32BAE0B70371A74B00C91783 /* Ogg_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ogg_Prefix.pch; sourceTree = "<group>"; };
+		556C3F391B79495E00D2CDDA /* DefaultConfigs.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = DefaultConfigs.xcconfig; path = ../../../DefaultConfigs.xcconfig; sourceTree = SOURCE_ROOT; };
+		556C3F3A1B79495E00D2CDDA /* DebugConfigs.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = DebugConfigs.xcconfig; path = ../../../DebugConfigs.xcconfig; sourceTree = SOURCE_ROOT; };
 		730F236109181A8D00AB638C /* bitwise.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; name = bitwise.c; path = ../src/bitwise.c; sourceTree = SOURCE_ROOT; };
 		730F236209181A8D00AB638C /* framing.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; name = framing.c; path = ../src/framing.c; sourceTree = SOURCE_ROOT; };
 		730F236509181ABE00AB638C /* ogg.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ogg.h; path = ../include/ogg/ogg.h; sourceTree = SOURCE_ROOT; };
@@ -59,20 +61,22 @@
 		0867D691FE84028FC02AAC07 /* Ogg */ = {
 			isa = PBXGroup;
 			children = (
+				556C3F391B79495E00D2CDDA /* DefaultConfigs.xcconfig */,
+				556C3F3A1B79495E00D2CDDA /* DebugConfigs.xcconfig */,
 				730F235F09181A3E00AB638C /* Headers */,
 				08FB77ACFE841707C02AAC07 /* Source */,
 				089C1665FE841158C02AAC07 /* Resources */,
-				0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */,
+				0867D69AFE84028FC02AAC07 /* Frameworks */,
 				034768DDFF38A45A11DB9C8B /* Products */,
 			);
 			name = Ogg;
 			sourceTree = "<group>";
 		};
-		0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */ = {
+		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = "External Frameworks and Libraries";
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		089C1665FE841158C02AAC07 /* Resources */ = {
@@ -168,11 +172,20 @@
 /* Begin PBXProject section */
 		0867D690FE84028FC02AAC07 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+			};
 			buildConfigurationList = 730F235809181A3A00AB638C /* Build configuration list for PBXProject "Ogg" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
 			mainGroup = 0867D691FE84028FC02AAC07 /* Ogg */;
 			productRefGroup = 034768DDFF38A45A11DB9C8B /* Products */;
 			projectDirPath = "";
+			projectRoot = "";
 			targets = (
 				8D07F2BC0486CC7A007CD1D0 /* Ogg */,
 				734FB2E40B18B33E00D561D7 /* libogg (static) */,
@@ -237,9 +250,12 @@
 		730F235509181A3A00AB638C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -248,6 +264,7 @@
 				GCC_PREFIX_HEADER = Ogg_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = /Library/Frameworks;
+				PRODUCT_BUNDLE_IDENTIFIER = org.xiph.ogg;
 				PRODUCT_NAME = Ogg;
 				WRAPPER_EXTENSION = framework;
 				ZERO_LINK = YES;
@@ -257,9 +274,12 @@
 		730F235609181A3A00AB638C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
+				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -267,6 +287,7 @@
 				GCC_PREFIX_HEADER = Ogg_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = /Library/Frameworks;
+				PRODUCT_BUNDLE_IDENTIFIER = org.xiph.ogg;
 				PRODUCT_NAME = Ogg;
 				WRAPPER_EXTENSION = framework;
 				ZERO_LINK = NO;
@@ -275,34 +296,36 @@
 		};
 		730F235909181A3A00AB638C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 556C3F3A1B79495E00D2CDDA /* DebugConfigs.xcconfig */;
 			buildSettings = {
-				GCC_OPTIMIZATION_LEVEL = 0;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(FRAMEWORK_SEARCH_PATHS)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				GCC_PREPROCESSOR_DEFINITIONS = __MACOSX__;
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 			};
 			name = Debug;
 		};
 		730F235A09181A3A00AB638C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 556C3F391B79495E00D2CDDA /* DefaultConfigs.xcconfig */;
 			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(FRAMEWORK_SEARCH_PATHS)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
 				);
-				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_FAST_MATH = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = __MACOSX__;
-				OTHER_CFLAGS = (
-					"$(OTHER_CFLAGS)",
-					"-ffast-math",
-					"-falign-loops=16",
-				);
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 			};
 			name = Release;
 		};
 		734FB2EE0B18B3B900D561D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -317,6 +340,7 @@
 		734FB2EF0B18B3B900D561D7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;

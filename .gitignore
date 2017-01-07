@@ -31,3 +31,7 @@ src/.libs
 src/.deps
 src/test_*
 macosx/build/
+.DS_Store
+.DS_Store
+project.xcworkspace/
+xcuserdata/
